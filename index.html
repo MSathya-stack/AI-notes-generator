@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Notes Generator</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="workspace" aria-label="AI Notes Generator">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Study workspace</p>
+            <h1>AI Notes Generator</h1>
+          </div>
+          <div class="status" id="status">Ready</div>
+        </header>
+
+        <section class="grid">
+          <form class="panel input-panel" id="notesForm">
+            <div class="panel-head">
+              <div>
+                <h2>Topic or Source</h2>
+                <p>Enter a topic, or paste lecture text, meeting transcripts, textbook excerpts, or rough notes.</p>
+              </div>
+              <button class="icon-button" type="button" id="clearInput" title="Clear input" aria-label="Clear input">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+
+            <label class="field">
+              <span>Topic or raw material</span>
+              <textarea id="sourceText" autocomplete="off" placeholder="Type a topic like machine learning, or paste your content here..."></textarea>
+            </label>
+
+            <div class="controls">
+              <label class="field compact">
+                <span>Note style</span>
+                <select id="noteStyle">
+                  <option value="study">Study notes</option>
+                  <option value="meeting">Meeting notes</option>
+                  <option value="research">Research brief</option>
+                  <option value="exam">Exam prep</option>
+                </select>
+              </label>
+
+              <label class="field compact">
+                <span>Detail</span>
+                <input id="detailLevel" type="range" min="1" max="3" value="2">
+              </label>
+            </div>
+
+            <fieldset class="checks">
+              <legend>Include</legend>
+              <label><input type="checkbox" id="includeSummary" checked> Summary</label>
+              <label><input type="checkbox" id="includeBullets" checked> Key points</label>
+              <label><input type="checkbox" id="includeFlashcards" checked> Flashcards</label>
+              <label><input type="checkbox" id="includeActions" checked> Actions</label>
+            </fieldset>
+
+            <button class="primary" type="submit">Generate Notes</button>
+          </form>
+
+          <section class="panel output-panel" aria-live="polite">
+            <div class="panel-head output-head">
+              <div>
+                <h2>Generated Notes</h2>
+                <p id="wordCount">0 words analyzed</p>
+              </div>
+              <div class="actions">
+                <button type="button" id="copyBtn" title="Copy notes" aria-label="Copy notes">Copy</button>
+                <button type="button" id="downloadBtn" title="Download Markdown" aria-label="Download Markdown">MD</button>
+              </div>
+            </div>
+            <article class="notes" id="notesOutput">
+              <div class="empty-state">
+                <div class="mark">AI</div>
+                <h3>Your notes will appear here</h3>
+                <p>Turn messy text into a clean summary, scannable points, flashcards, and follow-up tasks.</p>
+              </div>
+            </article>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js?v=2"></script>
+  </body>
+</html>
